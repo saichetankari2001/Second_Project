@@ -1,8 +1,9 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 
-const { mockCreate, mockFromTo, mockRegisterPlugin } = vi.hoisted(() => ({
+const { mockCreate, mockFromTo, mockSet, mockRegisterPlugin } = vi.hoisted(() => ({
   mockCreate: vi.fn(() => ({ kill: vi.fn() })),
   mockFromTo: vi.fn(() => ({ scrollTrigger: { kill: vi.fn() } })),
+  mockSet: vi.fn(),
   mockRegisterPlugin: vi.fn(),
 }))
 
@@ -10,6 +11,7 @@ vi.mock('gsap', () => ({
   default: {
     registerPlugin: mockRegisterPlugin,
     fromTo: mockFromTo,
+    set: mockSet,
   },
 }))
 
@@ -23,6 +25,7 @@ describe('initScrollAnimations', () => {
   beforeEach(() => {
     mockCreate.mockClear()
     mockFromTo.mockClear()
+    mockSet.mockClear()
   })
 
   it('registers a scroll-scrubbed trigger for the hero section', () => {
@@ -51,5 +54,13 @@ describe('initScrollAnimations', () => {
     const heroKill = mockCreate.mock.results[0].value.kill
     cleanup()
     expect(heroKill).toHaveBeenCalled()
+  })
+
+  it('immediately sets sections visible instead of animating when reduced motion is preferred', () => {
+    initScrollAnimations({ scrollProgress: { current: 0 }, prefersReducedMotion: true })
+    expect(mockSet).toHaveBeenCalledWith('#about', { autoAlpha: 1, y: 0 })
+    expect(mockSet).toHaveBeenCalledWith('#project', { autoAlpha: 1, y: 0 })
+    expect(mockSet).toHaveBeenCalledWith('#contact', { autoAlpha: 1, y: 0 })
+    expect(mockFromTo).not.toHaveBeenCalled()
   })
 })

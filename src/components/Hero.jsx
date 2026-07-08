@@ -1,6 +1,7 @@
 import { lazy, Suspense } from 'react'
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion'
 import { HeroFallback } from './HeroFallback'
+import { ErrorBoundary } from './ErrorBoundary'
 import './Hero.css'
 
 const Hero3DScene = lazy(() =>
@@ -15,13 +16,15 @@ export function Hero({ scrollProgress }) {
       {prefersReducedMotion ? (
         <HeroFallback />
       ) : (
-        <Suspense fallback={<HeroFallback />}>
-          <Hero3DScene scrollProgress={scrollProgress} />
-          <div className="hero-overlay">
-            <h1 className="hero-title">Your Name</h1>
-            <p className="hero-tagline">Software Developer</p>
-          </div>
-        </Suspense>
+        <ErrorBoundary fallback={<HeroFallback />}>
+          <Suspense fallback={<HeroFallback />}>
+            <Hero3DScene scrollProgress={scrollProgress} />
+            <div className="hero-overlay">
+              <h1 className="hero-title">Your Name</h1>
+              <p className="hero-tagline">Software Developer</p>
+            </div>
+          </Suspense>
+        </ErrorBoundary>
       )}
     </section>
   )

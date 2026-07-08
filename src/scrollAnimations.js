@@ -5,7 +5,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 export const EASE = 'power2.out'
 
-export function initScrollAnimations({ scrollProgress }) {
+export function initScrollAnimations({ scrollProgress, prefersReducedMotion = false }) {
   const heroTrigger = ScrollTrigger.create({
     trigger: '#hero',
     start: 'top top',
@@ -16,8 +16,12 @@ export function initScrollAnimations({ scrollProgress }) {
     },
   })
 
-  const sectionTweens = ['#about', '#project', '#contact'].map((selector) =>
-    gsap.fromTo(
+  const sectionTweens = ['#about', '#project', '#contact'].map((selector) => {
+    if (prefersReducedMotion) {
+      gsap.set(selector, { autoAlpha: 1, y: 0 })
+      return null
+    }
+    return gsap.fromTo(
       selector,
       { autoAlpha: 0, y: 40 },
       {
@@ -31,10 +35,10 @@ export function initScrollAnimations({ scrollProgress }) {
         },
       }
     )
-  )
+  })
 
   return () => {
     heroTrigger.kill()
-    sectionTweens.forEach((tween) => tween.scrollTrigger?.kill())
+    sectionTweens.forEach((tween) => tween?.scrollTrigger?.kill())
   }
 }
