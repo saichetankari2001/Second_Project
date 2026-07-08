@@ -718,12 +718,16 @@ git commit -m "feat: add Hero wrapper with reduced-motion and lazy-loaded 3D sce
 
 - [ ] **Step 1: Write the failing test**
 
+The mock factories below must read from `vi.hoisted()`, not plain `const`: Vitest hoists `vi.mock()` calls (and the `import` of the module under test that follows them) above all other statements in the file, so plain `const mockCreate = ...` declarations would still be in the temporal dead zone when the hoisted import triggers the mock factories — causing a `ReferenceError`. `vi.hoisted()` runs its callback at the same hoisted point, avoiding the ordering issue.
+
 ```js
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 
-const mockCreate = vi.fn(() => ({ kill: vi.fn() }))
-const mockFromTo = vi.fn(() => ({ scrollTrigger: { kill: vi.fn() } }))
-const mockRegisterPlugin = vi.fn()
+const { mockCreate, mockFromTo, mockRegisterPlugin } = vi.hoisted(() => ({
+  mockCreate: vi.fn(() => ({ kill: vi.fn() })),
+  mockFromTo: vi.fn(() => ({ scrollTrigger: { kill: vi.fn() } })),
+  mockRegisterPlugin: vi.fn(),
+}))
 
 vi.mock('gsap', () => ({
   default: {
