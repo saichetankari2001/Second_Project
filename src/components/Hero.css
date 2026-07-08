@@ -1,0 +1,47 @@
+.hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  padding: 0;
+  max-width: none;
+}
+
+.hero-canvas-wrapper {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-canvas-wrapper canvas {
+  display: block;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  pointer-events: none;
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+}
+
+.hero-tagline {
+  color: var(--color-text-secondary);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.hero-fallback {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
