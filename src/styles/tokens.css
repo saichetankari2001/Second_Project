@@ -1,0 +1,13 @@
+:root {
+  --color-bg-1: #05070d;
+  --color-bg-2: #0a1420;
+  --color-bg-3: #0d2233;
+  --color-glow-cyan: #38e0ff;
+  --color-text-primary: #e8fbff;
+  --color-text-secondary: #7fb8c9;
+
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', Arial, sans-serif;
+
+  --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+}
