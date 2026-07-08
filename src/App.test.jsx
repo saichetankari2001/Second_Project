@@ -1,10 +1,21 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import App from './App'
 
-describe('App scaffold', () => {
-  it('renders without crashing', () => {
+vi.mock('./scrollAnimations', () => ({
+  initScrollAnimations: vi.fn(() => vi.fn()),
+}))
+vi.mock('./components/Hero3DScene', () => ({
+  Hero3DScene: () => <div data-testid="hero-3d-scene" />,
+}))
+
+describe('App', () => {
+  it('renders Hero, About, Project, and Contact sections in order', async () => {
     render(<App />)
-    expect(screen.getByText('Portfolio scaffold ready')).toBeInTheDocument()
+    await screen.findByTestId('hero-3d-scene')
+    const sectionIds = Array.from(document.querySelectorAll('section')).map(
+      (section) => section.id
+    )
+    expect(sectionIds).toEqual(['hero', 'about', 'project', 'contact'])
   })
 })
