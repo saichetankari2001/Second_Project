@@ -1,0 +1,24 @@
+.contact-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.contact-links a {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  transition: color 0.2s var(--ease-standard), border-color 0.2s var(--ease-standard);
+}
+
+.contact-links a:hover {
+  color: var(--color-accent-teal);
+  border-color: var(--color-accent-teal);
+}
