@@ -7,13 +7,17 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.5rem 2.5rem;
+  padding: 1.1rem 2.5rem;
+  backdrop-filter: blur(16px);
+  background: rgba(8, 9, 12, 0.6);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .nav-logo {
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  letter-spacing: 0.05em;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: -0.02em;
   color: var(--color-text-primary);
 }
 
@@ -26,11 +30,10 @@
   color: var(--color-text-secondary);
   text-decoration: none;
   font-size: 0.85rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  letter-spacing: 0.04em;
   transition: color 0.2s var(--ease-standard);
 }
 
 .nav-links a:hover {
-  color: var(--color-glow-cyan);
+  color: var(--color-accent-teal);
 }
