@@ -1,5 +1,5 @@
 export const GITHUB_USERNAME = 'saichetankari2001'
-export const EXCLUDED_REPOS = ['Second_Project', 'Chintu1112']
+export const ALLOWED_REPOS = ['booking-api', 'live-chat-room', 'Agent_Chintu']
 
 const CACHE_KEY = 'portfolio:github-projects'
 const CACHE_TTL_MS = 10 * 60 * 1000
@@ -60,7 +60,7 @@ export async function fetchGithubProjects({
     if (!response.ok) return []
     const repos = await response.json()
     const projects = repos
-      .filter((repo) => !repo.fork && !EXCLUDED_REPOS.includes(repo.name))
+      .filter((repo) => !repo.fork && ALLOWED_REPOS.includes(repo.name))
       .map(toProject)
     if (storage) writeCache(storage, now, projects)
     return projects

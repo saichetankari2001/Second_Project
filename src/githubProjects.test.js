@@ -3,7 +3,7 @@ import {
   fetchGithubProjects,
   formatRelativeTime,
   GITHUB_USERNAME,
-  EXCLUDED_REPOS,
+  ALLOWED_REPOS,
 } from './githubProjects'
 
 function createStorage() {
@@ -14,9 +14,9 @@ function createStorage() {
   }
 }
 
-describe('EXCLUDED_REPOS', () => {
-  it('denylists the portfolio repo and the personal project', () => {
-    expect(EXCLUDED_REPOS).toEqual(['Second_Project', 'Chintu1112'])
+describe('ALLOWED_REPOS', () => {
+  it('allowlists only the repos chosen for the portfolio', () => {
+    expect(ALLOWED_REPOS).toEqual(['booking-api', 'live-chat-room', 'Agent_Chintu'])
   })
 })
 
@@ -41,11 +41,11 @@ describe('fetchGithubProjects', () => {
     { name: 'booking-api', description: 'Node/Express API', html_url: 'https://github.com/saichetankari2001/booking-api', language: 'TypeScript', pushed_at: '2026-07-29T00:00:00Z', fork: false },
     { name: 'live-chat-room', description: 'Real-time chat', html_url: 'https://github.com/saichetankari2001/live-chat-room', language: 'Python', pushed_at: '2026-07-20T00:00:00Z', fork: false },
     { name: 'Second_Project', description: 'This portfolio', html_url: 'https://github.com/saichetankari2001/Second_Project', language: 'JavaScript', pushed_at: '2026-07-30T00:00:00Z', fork: false },
-    { name: 'Chintu1112', description: 'Personal', html_url: 'https://github.com/saichetankari2001/Chintu1112', language: 'TypeScript', pushed_at: '2026-07-01T00:00:00Z', fork: false },
+    { name: 'Hello-Swinburne', description: 'Coursework practice repo', html_url: 'https://github.com/saichetankari2001/Hello-Swinburne', language: 'Java', pushed_at: '2026-01-01T00:00:00Z', fork: false },
     { name: 'some-fork', description: 'A fork', html_url: 'https://github.com/saichetankari2001/some-fork', language: 'JavaScript', pushed_at: '2026-06-01T00:00:00Z', fork: true },
   ]
 
-  it('fetches, excludes forks and denylisted repos, and maps to the project shape', async () => {
+  it('fetches, keeps only allowlisted non-fork repos, and maps to the project shape', async () => {
     const fetchImpl = vi.fn().mockResolvedValue({
       ok: true,
       json: () => Promise.resolve(REPOS_RESPONSE),
