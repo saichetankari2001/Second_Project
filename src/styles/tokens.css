@@ -1,13 +1,15 @@
 :root {
-  --color-bg-1: #05070d;
-  --color-bg-2: #0a1420;
-  --color-bg-3: #0d2233;
-  --color-glow-cyan: #38e0ff;
-  --color-text-primary: #e8fbff;
-  --color-text-secondary: #7fb8c9;
+  --color-bg-1: #08090c;
+  --color-bg-2: #0d1015;
+  --color-bg-3: #0b0c10;
+  --color-accent-teal: #5eead4;
+  --color-accent-green: #22c55e;
+  --color-text-primary: #f4f6f8;
+  --color-text-secondary: #9ba3b0;
+  --color-border: rgba(255, 255, 255, 0.08);
 
-  --font-display: 'Playfair Display', Georgia, serif;
   --font-body: 'Inter', Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
 
   --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
 }
