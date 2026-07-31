@@ -5,15 +5,22 @@ import { HeroFallback } from './HeroFallback'
 describe('HeroFallback', () => {
   it('renders the name and tagline without any canvas element', () => {
     render(<HeroFallback />)
-    expect(screen.getByText('Your Name')).toBeInTheDocument()
-    expect(screen.getByText('Software Developer')).toBeInTheDocument()
+    expect(screen.getByText('Saichetan Kari')).toBeInTheDocument()
+    expect(screen.getByText('Full-Stack Software Developer')).toBeInTheDocument()
     expect(document.querySelector('canvas')).toBeNull()
   })
 
   it('exposes an accessible label describing the static hero', () => {
     render(<HeroFallback />)
     expect(
-      screen.getByRole('img', { name: /static version/i })
+      screen.getByRole('img', { name: /saichetan kari/i })
+    ).toBeInTheDocument()
+  })
+
+  it('renders the open-to-roles eyebrow badge', () => {
+    render(<HeroFallback />)
+    expect(
+      screen.getByText('Open to Software Developer roles')
     ).toBeInTheDocument()
   })
 })

@@ -20,8 +20,12 @@ export function Hero({ scrollProgress }) {
           <Suspense fallback={<HeroFallback />}>
             <Hero3DScene scrollProgress={scrollProgress} />
             <div className="hero-overlay">
-              <h1 className="hero-title">Your Name</h1>
-              <p className="hero-tagline">Software Developer</p>
+              <div className="hero-eyebrow">
+                <span className="hero-eyebrow-dot" />
+                Open to Software Developer roles
+              </div>
+              <h1 className="hero-title">Saichetan Kari</h1>
+              <p className="hero-tagline">Full-Stack Software Developer</p>
             </div>
           </Suspense>
         </ErrorBoundary>

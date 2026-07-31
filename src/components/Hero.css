@@ -47,3 +47,37 @@
   justify-content: center;
   text-align: center;
 }
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  color: var(--color-accent-teal);
+  background: rgba(94, 234, 212, 0.08);
+  border: 1px solid rgba(94, 234, 212, 0.25);
+  border-radius: 20px;
+  padding: 0.35rem 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.hero-eyebrow-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-accent-green);
+  box-shadow: 0 0 8px var(--color-accent-green);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-eyebrow-dot {
+    animation: heroPulse 2s ease-in-out infinite;
+  }
+}
+
+@keyframes heroPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}

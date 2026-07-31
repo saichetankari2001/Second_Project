@@ -3,10 +3,14 @@ export function HeroFallback() {
     <div
       className="hero-fallback"
       role="img"
-      aria-label="Cyan particle tunnel, static version"
+      aria-label="Saichetan Kari, Full-Stack Software Developer — static version"
     >
-      <h1 className="hero-title">Your Name</h1>
-      <p className="hero-tagline">Software Developer</p>
+      <div className="hero-eyebrow">
+        <span className="hero-eyebrow-dot" />
+        Open to Software Developer roles
+      </div>
+      <h1 className="hero-title">Saichetan Kari</h1>
+      <p className="hero-tagline">Full-Stack Software Developer</p>
     </div>
   )
 }
