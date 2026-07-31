@@ -1,0 +1,36 @@
+.skill-groups {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 600px) {
+  .skill-groups {
+    grid-template-columns: 1fr;
+  }
+}
+
+.skill-group-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  color: var(--color-accent-teal);
+  text-transform: uppercase;
+  margin: 0 0 0.6rem;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.skill-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: 0.3rem 0.6rem;
+}
