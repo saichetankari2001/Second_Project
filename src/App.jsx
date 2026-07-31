@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { AmbientBackground } from './components/AmbientBackground'
 import { Nav } from './components/Nav'
 import { Hero } from './components/Hero'
 import { About } from './components/About'
@@ -17,13 +18,16 @@ function App() {
   }, [prefersReducedMotion])
 
   return (
-    <main>
-      <Nav />
-      <Hero scrollProgress={scrollProgress} />
-      <About />
-      <ProjectShowcase />
-      <Contact />
-    </main>
+    <>
+      <AmbientBackground />
+      <main>
+        <Nav />
+        <Hero scrollProgress={scrollProgress} />
+        <About />
+        <ProjectShowcase />
+        <Contact />
+      </main>
+    </>
   )
 }
 

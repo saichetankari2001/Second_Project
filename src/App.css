@@ -40,6 +40,11 @@ h1, h2, h3 {
   margin: 0 0 0.5em;
 }
 
+main {
+  position: relative;
+  z-index: 1;
+}
+
 section {
   padding: 6rem 2rem;
   max-width: 900px;
