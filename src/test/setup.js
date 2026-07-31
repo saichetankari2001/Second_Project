@@ -14,3 +14,8 @@ window.matchMedia = window.matchMedia || function matchMediaStub() {
     removeEventListener: () => {},
   }
 }
+
+window.requestAnimationFrame =
+  window.requestAnimationFrame || ((callback) => setTimeout(callback, 16))
+window.cancelAnimationFrame =
+  window.cancelAnimationFrame || ((id) => clearTimeout(id))

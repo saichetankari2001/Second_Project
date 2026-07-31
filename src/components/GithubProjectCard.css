@@ -1,0 +1,51 @@
+.github-card {
+  position: relative;
+  display: block;
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid var(--color-border);
+  background: linear-gradient(160deg, #12151a, #0b0c10);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  text-decoration: none;
+  color: inherit;
+}
+
+.github-card-lang-dot {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.github-card-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--color-text-primary);
+}
+
+.github-card-desc {
+  color: var(--color-text-secondary);
+  font-size: 0.85rem;
+  margin: 0.6rem 0 0;
+  line-height: 1.5;
+}
+
+.github-card-sync {
+  margin-top: 0.85rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--color-accent-teal);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.github-card-sync-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-accent-green);
+  box-shadow: 0 0 6px var(--color-accent-green);
+}
