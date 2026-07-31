@@ -2,6 +2,7 @@ import { useRef, useMemo } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { EffectComposer, Bloom } from '@react-three/postprocessing'
 import * as THREE from 'three'
+import { useDeviceOrientation } from '../hooks/useDeviceOrientation'
 
 const COIL_HEIGHT = 12
 const COIL_RADIUS = 1.5
@@ -40,7 +41,7 @@ function CoilStrand({ strandIndex }) {
 
   return (
     <mesh geometry={geometry}>
-      <meshBasicMaterial color="#7cf0ff" toneMapped={false} />
+      <meshBasicMaterial color="#5eead4" toneMapped={false} />
     </mesh>
   )
 }
@@ -103,7 +104,7 @@ function AmbientField() {
         />
       </bufferGeometry>
       <pointsMaterial
-        color="#1c6a8a"
+        color="#1c6a4a"
         size={0.035}
         sizeAttenuation
         transparent
@@ -117,6 +118,7 @@ function AmbientField() {
 
 export function Hero3DScene({ scrollProgress }) {
   const pointer = useRef({ x: 0, y: 0 })
+  const { needsPermission, requestPermission } = useDeviceOrientation(pointer)
 
   function handlePointerMove(event) {
     pointer.current.x = (event.clientX / window.innerWidth) * 2 - 1
@@ -126,7 +128,7 @@ export function Hero3DScene({ scrollProgress }) {
   return (
     <div className="hero-canvas-wrapper" onPointerMove={handlePointerMove}>
       <Canvas camera={{ position: [BASE_CAMERA.x, BASE_CAMERA.y, BASE_CAMERA.z], fov: 55 }}>
-        <fog attach="fog" args={['#05070d', 6, 26]} />
+        <fog attach="fog" args={['#08090c', 6, 26]} />
         <AmbientField />
         <ParticleCoil scrollProgress={scrollProgress} pointer={pointer} />
         <EffectComposer>
@@ -138,6 +140,15 @@ export function Hero3DScene({ scrollProgress }) {
           />
         </EffectComposer>
       </Canvas>
+      {needsPermission && (
+        <button
+          type="button"
+          className="hero-motion-permission"
+          onClick={requestPermission}
+        >
+          Enable motion
+        </button>
+      )}
     </div>
   )
 }
