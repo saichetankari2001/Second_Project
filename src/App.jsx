@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { Nav } from './components/Nav'
 import { Hero } from './components/Hero'
 import { About } from './components/About'
 import { ProjectShowcase } from './components/ProjectShowcase'
@@ -17,6 +18,7 @@ function App() {
 
   return (
     <main>
+      <Nav />
       <Hero scrollProgress={scrollProgress} />
       <About />
       <ProjectShowcase />

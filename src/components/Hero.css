@@ -20,14 +20,16 @@
   inset: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  text-align: center;
+  text-align: left;
+  padding-left: clamp(2rem, 8vw, 7rem);
   pointer-events: none;
 }
 
 .hero-title {
   font-size: clamp(2.5rem, 6vw, 5rem);
+  max-width: 12ch;
 }
 
 .hero-tagline {

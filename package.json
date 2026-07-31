@@ -11,18 +11,20 @@
     "test:watch": "vitest"
   },
   "dependencies": {
+    "@react-three/fiber": "latest",
+    "@react-three/postprocessing": "^3.0.4",
+    "gsap": "latest",
+    "postprocessing": "^6.39.2",
     "react": "latest",
     "react-dom": "latest",
-    "three": "latest",
-    "@react-three/fiber": "latest",
-    "gsap": "latest"
+    "three": "latest"
   },
   "devDependencies": {
-    "vite": "latest",
-    "@vitejs/plugin-react": "latest",
-    "vitest": "latest",
-    "jsdom": "latest",
+    "@testing-library/jest-dom": "latest",
     "@testing-library/react": "latest",
-    "@testing-library/jest-dom": "latest"
+    "@vitejs/plugin-react": "latest",
+    "jsdom": "latest",
+    "vite": "latest",
+    "vitest": "latest"
   }
 }

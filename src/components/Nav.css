@@ -1,0 +1,36 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 2.5rem;
+}
+
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+  color: var(--color-text-primary);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 0.2s var(--ease-standard);
+}
+
+.nav-links a:hover {
+  color: var(--color-glow-cyan);
+}
