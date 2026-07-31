@@ -1,0 +1,32 @@
+.project {
+  max-width: 1180px;
+}
+
+.project-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-accent-teal);
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.project-grid > .featured-project {
+  grid-row: span 2;
+}
+
+@media (max-width: 720px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-grid > .featured-project {
+    grid-row: auto;
+  }
+}

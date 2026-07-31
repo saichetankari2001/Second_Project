@@ -1,21 +1,41 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import { ProjectShowcase } from './ProjectShowcase'
+import { useGithubProjects } from '../hooks/useGithubProjects'
+
+vi.mock('../hooks/useGithubProjects')
 
 describe('ProjectShowcase', () => {
-  it('renders the case study heading and tech stack inside a #project section', () => {
+  it('renders the featured case study and a card for each synced GitHub project inside a #project section', () => {
+    useGithubProjects.mockReturnValue({
+      isLoading: false,
+      projects: [
+        {
+          name: 'booking-api',
+          description: 'Node/Express + Prisma REST API.',
+          url: 'https://github.com/saichetankari2001/booking-api',
+          language: 'TypeScript',
+          pushedAt: new Date().toISOString(),
+        },
+      ],
+    })
+
     render(<ProjectShowcase />)
+
     expect(
-      screen.getByRole('heading', { name: /tjs-v6/ })
+      screen.getByRole('heading', { name: /TJ's Kebab Centre/ })
     ).toBeInTheDocument()
-    expect(screen.getByText('Three.js')).toBeInTheDocument()
-    expect(screen.getByText('Firebase (Firestore + Auth)')).toBeInTheDocument()
+    expect(screen.getByText('booking-api')).toBeInTheDocument()
     expect(document.querySelector('section#project')).not.toBeNull()
   })
 
-  it('shows a disabled "coming soon" state instead of a live demo link', () => {
+  it('still renders the featured case study when no GitHub projects have loaded yet', () => {
+    useGithubProjects.mockReturnValue({ isLoading: true, projects: [] })
+
     render(<ProjectShowcase />)
-    expect(screen.getByText('Live Demo — Coming Soon')).toBeInTheDocument()
-    expect(screen.queryByRole('link', { name: /view live demo/i })).toBeNull()
+
+    expect(
+      screen.getByRole('heading', { name: /TJ's Kebab Centre/ })
+    ).toBeInTheDocument()
   })
 })
