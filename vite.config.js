@@ -8,5 +8,12 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: './src/test/setup.js',
     globals: false,
+    exclude: [
+      '**/node_modules/**',
+      '**/dist/**',
+      '**/.git/**',
+      '**/.worktrees/**',
+      '**/worktrees/**',
+    ],
   },
 })
