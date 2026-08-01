@@ -14,4 +14,12 @@ describe('FeaturedProject', () => {
       screen.getByText(/three-app ordering ecosystem/i)
     ).toBeInTheDocument()
   })
+
+  it('links to the real TJ\'s Kebab Centre GitHub repo, like the other project cards', () => {
+    render(<FeaturedProject />)
+    expect(screen.getByRole('link')).toHaveAttribute(
+      'href',
+      'https://github.com/saichetankari2001/tjs-kebab-centre'
+    )
+  })
 })

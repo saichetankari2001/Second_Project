@@ -1,5 +1,7 @@
 import './FeaturedProject.css'
 
+const TJS_KEBAB_URL = 'https://github.com/saichetankari2001/tjs-kebab-centre'
+
 const TAGS = [
   { label: 'React', color: '#60a5fa' },
   { label: 'React Native', color: '#38bdf8' },
@@ -10,7 +12,12 @@ const TAGS = [
 
 export function FeaturedProject() {
   return (
-    <article className="featured-project">
+    <a
+      className="featured-project"
+      href={TJS_KEBAB_URL}
+      target="_blank"
+      rel="noreferrer"
+    >
       <div className="featured-project-badge">★ FEATURED CASE STUDY</div>
       <h3 className="featured-project-title">
         TJ's Kebab Centre — Full-Stack Food Ordering Ecosystem
@@ -54,6 +61,6 @@ export function FeaturedProject() {
           </span>
         ))}
       </div>
-    </article>
+    </a>
   )
 }

@@ -32,6 +32,18 @@
   line-height: 1.5;
 }
 
+.github-card-highlights {
+  margin: 0.75rem 0 0;
+  padding-left: 1.1rem;
+  color: var(--color-text-secondary);
+  font-size: 0.78rem;
+  line-height: 1.55;
+}
+
+.github-card-highlights li {
+  margin-bottom: 0.4rem;
+}
+
 .github-card-sync {
   margin-top: 0.85rem;
   font-family: var(--font-mono);

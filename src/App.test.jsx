@@ -8,6 +8,9 @@ vi.mock('./scrollAnimations', () => ({
 vi.mock('./components/Hero3DScene', () => ({
   Hero3DScene: () => <div data-testid="hero-3d-scene" />,
 }))
+vi.mock('./components/AmbientBackground', () => ({
+  AmbientBackground: () => <div data-testid="ambient-background" />,
+}))
 vi.mock('./hooks/useGithubProjects', () => ({
   useGithubProjects: () => ({ projects: [], isLoading: false }),
 }))

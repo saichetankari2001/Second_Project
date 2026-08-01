@@ -15,6 +15,22 @@
   display: block;
 }
 
+.hero-orb-frame {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 60%;
+  min-width: 320px;
+}
+
+@media (max-width: 900px) {
+  .hero-orb-frame {
+    width: 100%;
+    opacity: 0.7;
+  }
+}
+
 .hero-overlay {
   position: absolute;
   inset: 0;

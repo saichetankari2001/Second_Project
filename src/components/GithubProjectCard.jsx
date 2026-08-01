@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { formatRelativeTime } from '../githubProjects'
+import { PROJECT_DETAILS } from '../projectDetails'
 import './GithubProjectCard.css'
 
 const LANGUAGE_COLORS = {
@@ -13,6 +14,8 @@ const DEFAULT_LANGUAGE_COLOR = '#8b93a3'
 
 export function GithubProjectCard({ project }) {
   const languageColor = LANGUAGE_COLORS[project.language] ?? DEFAULT_LANGUAGE_COLOR
+  const details = PROJECT_DETAILS[project.name]
+  const summary = details?.summary || project.description
 
   return (
     <motion.a
@@ -33,7 +36,14 @@ export function GithubProjectCard({ project }) {
         />
       )}
       <div className="github-card-title">{project.name}</div>
-      <p className="github-card-desc">{project.description}</p>
+      <p className="github-card-desc">{summary}</p>
+      {details?.highlights && (
+        <ul className="github-card-highlights">
+          {details.highlights.map((highlight) => (
+            <li key={highlight}>{highlight}</li>
+          ))}
+        </ul>
+      )}
       <div className="github-card-sync">
         <span className="github-card-sync-dot" aria-hidden="true" />
         synced from GitHub · {formatRelativeTime(project.pushedAt)}
